@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencode2others"
+description = "Generate coding-agent configuration files (Pi, Claude Code, OpenAI Codex, ZCode) from an OpenCode Go subscription."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "opencode2others contributors" }]
+keywords = [
+    "opencode",
+    "opencode-go",
+    "pi",
+    "claude-code",
+    "codex",
+    "zcode",
+    "llm",
+    "configuration",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Utilities",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.scripts]
+opencode2others = "opencode2others.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jiubafangxing/opencode2others"
+Repository = "https://github.com/jiubafangxing/opencode2others"
+Issues = "https://github.com/jiubafangxing/opencode2others/issues"
+Changelog = "https://github.com/jiubafangxing/opencode2others/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["opencode2others", "opencode2others.targets"]
+py-modules = []
+
+[tool.setuptools.dynamic]
+version = { attr = "opencode2others.__version__" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
